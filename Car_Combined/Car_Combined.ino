@@ -1,6 +1,9 @@
 #include <SPI.h>
 #include "RF24.h"
+#include "Motor.h"
 
+Motor motor(0,2,1);
+Motor motor1(3,5,4);
 RF24 radio(7, 8);
 
 const int PACKETSIZE = 6;
@@ -28,6 +31,13 @@ void loop() {
     Serial.print(":");
     Serial.println(intPacket[2]);
     Serial.flush();
+
+    int power = map(intPacket[0]-10, 0, 1023, -255, 255);
+    int hot = map(intPacket[1], 0, 1023, -255, 255);
+    int leftPower = constrain(power-hot, -255, 255);
+    int rightPower = constrain(power+hot, -255, 255);
+    motor.run(leftPower);
+    motor1.run(rightPower);
   }
   
 }

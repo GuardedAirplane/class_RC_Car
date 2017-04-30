@@ -8,7 +8,7 @@ byte packet[PACKETSIZE];
 int joySelPin = 9;
 int joyXPin = A0;
 int joyYPin = A1;
-int radioChannel = 40;
+int radioChannel = 69;
 byte address[6] = {"12345"};
 
 void setup() {
