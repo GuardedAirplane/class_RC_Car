@@ -24,5 +24,14 @@ void loop() {
   intPacket[0] = analogRead(joyXPin);
   intPacket[1] = analogRead(joyYPin);
   intPacket[2] = digitalRead(joySelPin);
+  Serial.print("X: ");
+  Serial.print(analogRead(joyXPin));
+  Serial.print("; ");
+  Serial.print("Y: ");
+  Serial.print(analogRead(joyYPin));
+  Serial.print("; ");
+  Serial.print("Sel: ");
+  Serial.print(digitalRead(joySelPin));
+  Serial.print("; ");
   radio.write((void*)packet, PACKETSIZE, false);
 }
