@@ -9,29 +9,15 @@ void setup() {
 }
 
 void loop() {
-  int currentSpeed = 200;
-  Serial.println("First For-Loop");
-  for (int i=0; i<=255; i++){
-    motor.run(i);
-    motor1.run(i);
-    delay(10);
-  }
-  Serial.println("Second For-Loop");
-  for (int i=254; i>=0; i--){
-    motor.run(i);
-    motor1.run(i);
-    delay(10);
-  }
-  Serial.println("Third For-Loop");
-  for (int i=0; i<=255; i++){
-    motor.run(-i);
-    motor1.run(-i);
-    delay(10);
-  }
-  Serial.println("Forth For-Loop");
-  for (int i=254; i>=0; i--){
-    motor.run(-i);
-    motor1.run(-i);
-    delay(10);
-  }
-};
+   for(int i = 0; i <= 1023; i++){
+      for(int x = 0; x <= 1023; i++){
+      int power = map(i, 0, 1023, -255, 255);
+      int hot = map(x, 0, 1023, -255, 255);
+      int leftPower = constrain(power+hot, -255, 255);
+      int rightPower = constrain(power-hot, -255, 255);
+      motor.run(leftPower);
+      motor1.run(rightPower);
+      }
+   }
+   
+}
