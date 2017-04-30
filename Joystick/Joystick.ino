@@ -32,6 +32,6 @@ void loop() {
   Serial.print("; ");
   Serial.print("Sel: ");
   Serial.print(digitalRead(joySelPin));
-  Serial.print("; ");
+  Serial.println("; ");
   radio.write((void*)packet, PACKETSIZE, false);
 }
