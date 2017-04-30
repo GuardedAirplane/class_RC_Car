@@ -17,6 +17,7 @@ void setup() {
   radio.setChannel(radioChannel);
   radio.setPALevel(RF24_PA_HIGH);
   radio.openWritingPipe(address);
+  Serial.begin(115200);
 }
 
 void loop() {
