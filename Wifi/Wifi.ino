@@ -1,11 +1,11 @@
 #include "WiFiEsp.h"
 #include "SoftwareSerial.h"
 
-char ssid[] = "change";
-char pass[] = "change";
+char ssid[] = "Kim's iPhone";
+char pass[] = "puffypenguin";
 String channelKey = "GF7H3XRXYNLE5ZFK";
 
-SoftwareSerial Serial1(9, 10);
+SoftwareSerial Serial1(8, 9);
 WiFiEspClient client;
 
 unsigned long last_send_time = 0;
