@@ -2,14 +2,16 @@
 #include "RF24.h"
 #include "Motor.h"
 
-Motor motor(0,2,1);
-Motor motor1(3,5,4);
+Motor motor(2,4,3);
+Motor motor1(5,10,6);
 RF24 radio(7, 8);
 
 const int PACKETSIZE = 6;
 byte packet[PACKETSIZE];
 int radioChannel = 69;
 byte address[6] = {"12345"};
+
+int test = 0;
 
 void setup() {
   Serial.begin(115200);
@@ -21,6 +23,36 @@ void setup() {
 }
 
 void loop() {
+
+  if (test == 0) {
+    motor.run(255);
+    motor1.run(255);
+    Serial.println("1");
+    delay(3000);
+    motor.run(0);
+    motor1.run(255);
+   Serial.println("2");
+    delay(3000);
+    motor.run(255);
+    motor1.run(0);
+    Serial.println("3");
+    delay(3000);
+    motor.run(-255);
+    motor1.run(-255);
+    Serial.println("4");
+    delay(3000);
+    motor.run(0);
+    motor1.run(-255);
+    Serial.println("5");
+    delay(3000);
+    motor.run(-255);
+    motor1.run(0);
+    Serial.println("1");
+    delay(3000);
+    motor.run(0);
+    motor1.run(0);
+    test = 1;
+  }
   
   if (radio.available()) {
     int *intPacket = (int *)packet;
