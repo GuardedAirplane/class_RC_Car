@@ -11,12 +11,7 @@ byte packet[PACKETSIZE];
 int radioChannel = 69;
 byte address[6] = {"12345"};
 
-<<<<<<< HEAD
 
-int test = 1;
-=======
-int test = 0;
->>>>>>> parent of c1a39e0... Wifi Push
 
 
 void setup() {
