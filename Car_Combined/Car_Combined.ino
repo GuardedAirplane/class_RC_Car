@@ -21,7 +21,9 @@ int ledPin = 13;                  // LED test pin
 float desLat=39.00;                   //Destination Latitude filled by user in Serial Monitor Box
 float desLon=-83.00;
 
+
 int test = 1;
+
 
 void setup() {
   Serial.end();
@@ -39,6 +41,7 @@ void setup() {
 }
 
 void loop() {
+<<<<<<< HEAD
   //Serial.println("Test 4");
 
 //Serial.println("Test 5");
@@ -71,6 +74,8 @@ void loop() {
     motor1.run(0);
     test = 1;
   }
+=======
+>>>>>>> master
   
   if (radio.available()) {
     int *intPacket = (int *)packet;
