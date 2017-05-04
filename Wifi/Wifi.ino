@@ -8,14 +8,19 @@
 #define ECHO_PIN 6
 #define MAX_DISTANCE 400
 
+<<<<<<< HEAD
 char ssid[] = "Kim's iPhone";
 char pass[] = "Penguin212456";
+=======
+char ssid[] = "change";
+char pass[] = "change";
+>>>>>>> parent of c1a39e0... Wifi Push
 String channelKey = "GF7H3XRXYNLE5ZFK";
                   // LED test pin
 float desLat=12.00;                   //Destination Latitude filled by user in Serial Monitor Box
 float desLon=24.00;
 
-SoftwareSerial Serial1(8, 9);
+SoftwareSerial Serial1(9, 10);
 WiFiEspClient client;
 NewPing sonar(TRIGGER_PIN, ECHO_PIN, MAX_DISTANCE);
 dGPS dgps = dGPS();
