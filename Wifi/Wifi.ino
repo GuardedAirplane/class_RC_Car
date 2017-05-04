@@ -6,11 +6,11 @@
  
 #define TRIGGER_PIN 7
 #define ECHO_PIN 6
-#define MAX_DISTANCE 400
+#define MAX_DISTANCE 200
 
 char ssid[] = "Kim's iPhone";
 char pass[] = "Penguin212456";
-String channelKey = "GF7H3XRXYNLE5ZFK";
+String channelKey = "4LXJJBBWV1KOT9NA";
                   // LED test pin
 float desLat=12.00;                   //Destination Latitude filled by user in Serial Monitor Box
 float desLon=24.00;
@@ -18,7 +18,7 @@ float desLon=24.00;
 SoftwareSerial Serial1(8, 9);
 WiFiEspClient client;
 NewPing sonar(TRIGGER_PIN, ECHO_PIN, MAX_DISTANCE);
-dGPS dgps = dGPS();
+//dGPS dgps = dGPS();
 
 unsigned long last_send_time = 0;
 unsigned long sendTimeout = 30000;
@@ -43,7 +43,7 @@ void setup() {
 
   delay(3000);
   Serial.println("Test");
-  dgps.init();
+  //dgps.init();
   Serial.println("Test 2");
   delay(3000);
   Serial.println("Test 3");
@@ -69,9 +69,9 @@ bool doWebRequest(String server, String path, String params) {
 }
 
 void loop() {
-  Serial.println("Test 4");
+  
 
-  dgps.update(desLat, desLon);
+  //dgps.update(desLat, desLon);
 
   while (client.available()) {
     char c = client.read();
@@ -83,22 +83,22 @@ void loop() {
   }
 
   if (millis() - last_send_time > sendTimeout) {
-    String encoded = "key=" + channelKey + "&field1=" + String(sonar.ping_cm());
+    unsigned int uS = sonar.ping_cm();
+    Serial.print(uS);
+    Serial.println("cm");
+    delay(100);
+  
+    Serial.print("Latitude: ");
+    //Serial.println(dgps.Lat(), 6);  // Lattitude - in DD.MMSSSS format (decimal-degrees format)  (D-Degree; M-Minute; S-Second)
+    //String myLat (dgps.Lat(), 6);
+    Serial.print("Longitude: ");
+    //Serial.println(dgps.Lon(), 6);  // Longitude - in DD.MMSSSS format (decimal-degrees format)  (D-Degree; M-Minute; S-Second)
+    //String myLon (dgps.Lon(), 6);
+    delay(3000);
+    
+    String encoded = "key=" + channelKey + "&field1=" + String(uS);
     doWebRequest("api.thingspeak.com", "/update", encoded);
     last_send_time = millis();
   }
 
-   
-   unsigned int uS = sonar.ping_cm();
-   Serial.print(uS);
-   Serial.println("cm");
-   delay(100);
-  
-  Serial.print("Latitude: ");
-  Serial.println(dgps.Lat(), 6);  // Lattitude - in DD.MMSSSS format (decimal-degrees format)  (D-Degree; M-Minute; S-Second)
-  Serial.print("Longitude: ");
-  Serial.println(dgps.Lon(), 6);  // Longitude - in DD.MMSSSS format (decimal-degrees format)  (D-Degree; M-Minute; S-Second)
-  delay(1000);
-   
-   
 }
