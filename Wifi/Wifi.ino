@@ -4,11 +4,15 @@
 <<<<<<< HEAD
 char ssid[] = "Kim's iPhone";
 <<<<<<< HEAD
+<<<<<<< HEAD
 char pass[] = "Penguin212456";
 =======
 char ssid[] = "change";
 char pass[] = "change";
 >>>>>>> parent of c1a39e0... Wifi Push
+=======
+char pass[] = "puffypenguin";
+>>>>>>> parent of f89750b... Wifi Combined
 =======
 char pass[] = "puffypenguin";
 >>>>>>> parent of f89750b... Wifi Combined
